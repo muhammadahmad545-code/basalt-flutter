@@ -496,7 +496,7 @@ class BBars extends StatelessWidget {
     final p = context.basalt;
     final max = values.fold<double>(0, (m, v) => v > m ? v : m);
     return SizedBox(
-      height: height + (labels != null ? 20 : 0),
+      height: height + (labels != null ? 26 : 0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
