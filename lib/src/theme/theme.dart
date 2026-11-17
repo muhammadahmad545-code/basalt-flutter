@@ -89,7 +89,6 @@ ThemeData basaltTheme(Brightness brightness, BasaltAccent accent) {
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: {
         TargetPlatform.android: FadeForwardsPageTransitionsBuilder(),
-        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
       },
     ),
     appBarTheme: AppBarTheme(

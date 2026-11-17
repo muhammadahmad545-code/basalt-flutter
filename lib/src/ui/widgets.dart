@@ -474,7 +474,7 @@ class BRing extends StatelessWidget {
               backgroundColor: p.fill,
             ),
           ),
-          if (child != null) child!,
+          ?child,
         ],
       ),
     );
