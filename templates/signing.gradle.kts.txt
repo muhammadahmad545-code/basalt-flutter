@@ -1,0 +1,22 @@
+// Paste inside android { } in android/app/build.gradle.kts. CI provides the suite's release key
+// through environment variables; local builds fall back to the debug key.
+    signingConfigs {
+        create("release") {
+            val ks = System.getenv("RELEASE_KEYSTORE_PATH")
+            if (ks != null) {
+                storeFile = file(ks)
+                storePassword = System.getenv("RELEASE_KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("RELEASE_KEY_ALIAS")
+                keyPassword = System.getenv("RELEASE_KEY_PASSWORD")
+                storeType = "PKCS12"
+            }
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig = if (System.getenv("RELEASE_KEYSTORE_PATH") != null) signingConfigs.getByName("release") else signingConfigs.getByName("debug")
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+    }
